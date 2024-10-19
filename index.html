@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/png" href="heart.png" />
+    <title>Xin Gửi Tới Bé Yêu 💗💗💗</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="loader">
+        <div class="cardHover">
+          <div class="inner one" style="--i: 1"></div>
+          <div class="inner two" style="--i: 1"></div>
+          <div class="inner three" style="--i: 1"></div>
+          <div class="box-heart">
+            <div class="heart"></div>
+          </div>
+        </div>
+      </div>
+      <button><p>Nhấn vào đây đi 🫶🏻</p></button>
+      <div class="content">
+        <i class="fa-solid fa-xmark"></i>
+        <h1>Gửi em!</h1>
+        <p id="typewriter">
+          "Ngày 20/10, chúc em có một ngày thật vui vẻ, nụ cười sẽ giữ mãi trên môi. Những mệt mỏi, vất vả, u buồn, xui xẻo hay khó khăn gì cũng sẽ qua, chỉ còn lại hình bóng đáng yêu, xinh đẹp, mang đầy niềm vui và luôn tràn ngập may mắn, sức khỏe." -- I love you 3000 -- 
+        </p>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript" src="app.js"></script>
+  <script>
+    VanillaTilt.init(document.querySelector(".wrapper"), {
+      max: 25,
+      speed: 400,
+      glare: true,
+      "max-glare": 0.25,
+      gyroscopeMinAngleX: -45,
+    });
+    var btn = document.querySelector("button");
+    var closeBtn = document.querySelector(".fa-xmark");
+    btn.addEventListener("click", () => {
+      document.querySelector(".wrapper").classList.add("active");
+      btn.style.display = "none";
+    });
+    closeBtn.addEventListener("click", () => {
+      document.querySelector(".wrapper").classList.remove("active");
+      btn.style.display = "block";
+    });
+    function typeWriter(element, text, speed) {
+  let i = 0;
+  element.innerHTML = ""; // Bắt đầu với nội dung trống
+
+  function type() {
+    if (i < text.length) {
+      element.innerHTML += text.charAt(i); // Thêm từng ký tự vào
+      i++;
+      setTimeout(type, speed); // Đặt thời gian giữa mỗi ký tự
+    } else {
+      element.style.borderRight = "none"; // Xóa con trỏ khi hoàn thành
+    }
+  }
+
+  type();
+}
+
+// Lấy phần tử <p> trong class "content"
+const pElement = document.getElementById("typewriter");
+// Nội dung và tốc độ gõ máy (tính bằng mili giây)
+typeWriter(pElement, pElement.innerText, 40); // Tốc độ: 100ms mỗi ký tự
+
+  </script>
+</html>
